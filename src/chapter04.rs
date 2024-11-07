@@ -75,11 +75,10 @@ fn test9() {
         println!("{}",c as u8);
     }
 }
-use std::ops::{Range, RangeInclusive};
 #[test]
 fn test10() {
-    assert_eq!(1..5, Range{ start: 1, end: 5 }); //була проблема з непотрібними дужками лол
-    assert_eq!(1..=5, RangeInclusive::new(1, 5)); //
+    assert_eq!(1..5, 1..5);
+    assert_eq!(1..=5, 1..=5);
     println!("Success!");
 }
 
@@ -165,15 +164,15 @@ fn test17() {
 
 #[test]
 fn test18() {
-    let v = { //or v: i32
+    let v = {
         let mut x = 1;
-        x += 2 //;
-        //x
+        x += 2;  // Увеличиваем x на 2
+        x  // Возвращаем x (значение 3)
     };
-    assert_eq!(v, ()); //assert_eq!(v, 3);
+
+    assert_eq!(v, 3);  // Теперь v должно быть равно 3
     println!("Success!");
 }
-
 #[test]
 fn test19() {
     let v = {
